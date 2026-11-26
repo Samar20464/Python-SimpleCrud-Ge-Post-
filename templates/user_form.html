@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+
+<form
+  {% if method == "put" %}data-method="put" data-redirect="{{ url_for('index') }}"{% endif %}
+  action="{{ action }}"
+  method="post"
+>
+  <label>
+    Name<br>
+    <input name="name" value="{{ user.name if user else '' }}" required>
+  </label>
+  <label>
+    Email<br>
+    <input name="email" type="email" value="{{ user.email if user else '' }}" required>
+  </label>
+  <div class="form-actions">
+    <button type="submit">Save</button>
+    <a href="{{ url_for('index') }}">Cancel</a>
+  </div>
+</form>
+{% endblock %}

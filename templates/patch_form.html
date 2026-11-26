@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Partial update (PATCH){% endblock %}
+
+{% block content %}
+<h1>Partial update (PATCH)</h1>
+<p>Leave a field empty to keep its current value.</p>
+
+<form data-method="patch" data-redirect="{{ url_for('index') }}" action="{{ action }}" method="post">
+  <label>
+    Name<br>
+    <input name="name" placeholder="{{ user.name }}">
+  </label>
+  <label>
+    Email<br>
+    <input name="email" type="email" placeholder="{{ user.email }}">
+  </label>
+  <div class="form-actions">
+    <button type="submit">Patch</button>
+    <a href="{{ url_for('index') }}">Cancel</a>
+  </div>
+</form>
+{% endblock %}
